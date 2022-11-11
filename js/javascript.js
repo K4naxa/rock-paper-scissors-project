@@ -27,39 +27,44 @@ function game() {
       switch (computer) {
         case "rock":
           alert("Draw");
-          break;
+          return "Draw";
+
         case "paper":
           alert("You Lost");
-          break;
+          return "lost";
+
         case "scissor":
           alert("You Won");
-          break;
+          return "Won";
       }
       break;
     case "paper":
       switch (computer) {
         case "rock":
           alert("You Won!");
-          break;
+
         case "paper":
           alert("Draw");
-          break;
+          return "Draw";
+
         case "scissor":
           alert("You Lost");
-          break;
+          return "lost";
       }
       break;
     case "scissor":
       switch (computer) {
         case "rock":
           alert("You Won");
-          break;
+          return "Won";
+
         case "paper":
           alert("You Won");
-          break;
+          return "Won";
+
         case "scissor":
           alert("Draw");
-          break;
+          return "Draw";
       }
       break;
   }
