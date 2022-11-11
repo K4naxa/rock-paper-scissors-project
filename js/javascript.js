@@ -16,23 +16,52 @@ function computerChoice() {
 }
 
 function game() {
-  alert("Hello, lets play a game of rock, paper, scissors.");
+  alert("Hello, lets play a game of rock, paper, scissor.");
 
   let computer = computerChoice();
   let playerHand = prompt("Pick one: Rock, Paper or Scissor");
+  playerHand = playerHand.toLowerCase();
 
-  if (computer == "rock") {
-    if (playerHand == "rock") alert("Draw");
-    else if (playerHand == "paper") alert("You Won");
-    else if (playerHand == "Scissors") alert("You Lost");
-  } else if (computer == "paper") {
-    if (playerHand == "rock") alert("You Lost");
-    else if (playerHand == "paper") alert("Draw");
-    else if (playerHand == "Scissors") alert("You Won");
-  } else if (computer == "scissors") {
-    if (playerHand == "rock") alert("You Won");
-    else if (playerHand == "paper") alert("You lost");
-    else if (playerHand == "Scissors") alert("Draw");
+  switch (playerHand) {
+    case "rock":
+      switch (computer) {
+        case "rock":
+          alert("Draw");
+          break;
+        case "paper":
+          alert("You Lost");
+          break;
+        case "scissor":
+          alert("You Won");
+          break;
+      }
+      break;
+    case "paper":
+      switch (computer) {
+        case "rock":
+          alert("You Won!");
+          break;
+        case "paper":
+          alert("Draw");
+          break;
+        case "scissor":
+          alert("You Lost");
+          break;
+      }
+      break;
+    case "scissor":
+      switch (computer) {
+        case "rock":
+          alert("You Won");
+          break;
+        case "paper":
+          alert("You Won");
+          break;
+        case "scissor":
+          alert("Draw");
+          break;
+      }
+      break;
   }
 }
 
