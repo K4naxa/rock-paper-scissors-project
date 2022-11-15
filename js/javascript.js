@@ -16,13 +16,13 @@ function computerChoice() {
 }
 
 function playRound() {
-  let computer = computerChoice();
+  let computerHand = computerChoice();
   let playerHand = prompt("Pick one: Rock, Paper or Scissor");
   playerHand = playerHand.toLowerCase();
 
   switch (playerHand) {
     case "rock":
-      switch (computer) {
+      switch (computerHand) {
         case "rock":
           alert("Draw");
           return "draw";
@@ -37,7 +37,7 @@ function playRound() {
       }
       break;
     case "paper":
-      switch (computer) {
+      switch (computerHand) {
         case "rock":
           alert("You Won!");
           return "won";
@@ -52,7 +52,7 @@ function playRound() {
       }
       break;
     case "scissor":
-      switch (computer) {
+      switch (computerHand) {
         case "rock":
           alert("You Lost");
           return "lost";
@@ -85,15 +85,13 @@ function game() {
         ++computerScore;
         break;
     }
-    if (playerScore == 3) {
-      alert(`You Won the GAME ${playerScore} - ${computerScore}`);
-      return;
-    }
-    if (computerScore == 3) {
-      alert(`You Lost the GAME ${playerScore} - ${computerScore}`);
-      return;
-    }
+    // if (playerScore == 3) {
+    //   alert(`You Won the GAME ${playerScore} - ${computerScore}`);
+    //   return;
+    // }
+    // if (computerScore == 3) {
+    //   alert(`You Lost the GAME ${playerScore} - ${computerScore}`);
+    //   return;
+    // }
   }
 }
-
-game();
