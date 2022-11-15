@@ -16,9 +16,23 @@
   display: flex;
   align-content: center;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .score {
   font-size: 70px;
+  display: flex;
+  gap: 30px;
+  margin: 50px;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+.points {
+  display: flex;
+  font-size: 70px;
+  display: flex;
+  gap: 30px;
+  margin: 50px;
   justify-content: center;
   text-align: center;
 }

@@ -1,6 +1,18 @@
+const playerScore = document.querySelector(".playerScore");
+const computerScore = document.querySelector(".computerScore");
+const playBtn = document.querySelector(".play");
+const rockBtn = document.querySelector(".button-rock");
+const paperBtn = document.querySelector(".button-paper");
+const scissorBtn = document.querySelector(".button-scissor");
+const scoreBoard = document.querySelector(".score");
+const scoreTxt = document.querySelector(".scoreTxt");
+
+const winTxt = document.createTextNode("YOU WON");
+const lostTxt = document.createTextNode("YOU LOST");
+
 function computerChoice() {
   min = Math.ceil(0);
-  max = Math.floor(2);
+  max = Math.floor(3);
   num = Math.floor(Math.random() * (max - min) + min);
 
   switch (num) {
@@ -14,55 +26,64 @@ function computerChoice() {
       console.log("Switch ERROR");
   }
 }
-
-function playRound() {
+function checkWinner() {
+  if (playerScore.textContent == 3) {
+    scoreTxt.appendChild(winTxt);
+    return true;
+  } else if (computerScore.textContent == 3) {
+    scoreTxt.appendChild(lostTxt);
+    return true;
+  } else return false;
+}
+function playRound(playerHand) {
   let computerHand = computerChoice();
-  let playerHand = prompt("Pick one: Rock, Paper or Scissor");
-  playerHand = playerHand.toLowerCase();
 
   switch (playerHand) {
     case "rock":
       switch (computerHand) {
         case "rock":
-          alert("Draw");
           return "draw";
 
         case "paper":
-          alert("You Lost");
-          return "lost";
+          ++computerScore.textContent;
+          checkWinner();
+          return;
 
         case "scissor":
-          alert("You Won");
-          return "won";
+          ++playerScore.textContent;
+          checkWinner();
+          return;
       }
       break;
     case "paper":
       switch (computerHand) {
         case "rock":
-          alert("You Won!");
-          return "won";
+          ++playerScore.textContent;
+          checkWinner();
+          return;
 
         case "paper":
-          alert("Draw");
           return "draw";
 
         case "scissor":
-          alert("You Lost");
-          return "lost";
+          ++computerScore.textContent;
+          checkWinner();
+          return;
       }
       break;
     case "scissor":
       switch (computerHand) {
         case "rock":
-          alert("You Lost");
-          return "lost";
+          ++computerScore.textContent;
+          checkWinner();
+          return;
 
         case "paper":
-          alert("You Won");
-          return "won";
+          ++playerScore.textContent;
+          checkWinner();
+          return;
 
         case "scissor":
-          alert("Draw");
           return "draw";
       }
       break;
@@ -70,28 +91,22 @@ function playRound() {
 }
 
 function game() {
-  alert("Hello, lets play a game of rock, paper, scissor.\n\n Best of 5 wins");
-  let playerScore = 0,
-    computerScore = 0;
-
-  while (true) {
-    switch (playRound()) {
-      case "draw":
-        break;
-      case "won":
-        ++playerScore;
-        break;
-      case "lost":
-        ++computerScore;
-        break;
-    }
-    // if (playerScore == 3) {
-    //   alert(`You Won the GAME ${playerScore} - ${computerScore}`);
-    //   return;
-    // }
-    // if (computerScore == 3) {
-    //   alert(`You Lost the GAME ${playerScore} - ${computerScore}`);
-    //   return;
-    // }
-  }
+  rockBtn.addEventListener("click", function () {
+    playRound("rock");
+  });
+  paperBtn.addEventListener("click", function () {
+    playRound("paper");
+  });
+  scissorBtn.addEventListener("click", function () {
+    playRound("scissor");
+  });
 }
+
+playBtn.addEventListener("click", () => {
+  (playerScore.textContent = 0), (computerScore.textContent = 0);
+  if (scoreTxt.hasChildNodes()) {
+    scoreTxt.removeChild(winTxt);
+    scoreTxt.removeChild(lostTxt);
+  }
+  game();
+});
