@@ -15,7 +15,8 @@
 .container {
   display: flex;
   align-content: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 100px;
   flex-wrap: wrap;
 }
 .score {
@@ -41,4 +42,23 @@
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+.button-rock {
+  background-image: url(/images/rock.png);
+  background-color: #3b3c3f;
+  width: 350px;
+  height: 350px;
+}
+.button-paper {
+  background-image: url(/images/paper.png);
+  background-color: #3b3c3f;
+  width: 350px;
+  height: 350px;
+}
+.button-scissor {
+  background-image: url(/images/scissor.png);
+  background-color: #3b3c3f;
+  width: 350px;
+  height: 350px;
 }
